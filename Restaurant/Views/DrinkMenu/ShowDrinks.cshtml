@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Restaurant.Models.Drink>
+@{
+    ViewBag.Title = "Все смартфоны";
+}
+
+<table class="table">
+    <tr><td>Модель</td><td>Производитель</td><td>Цена</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.Name</td><td>@item.Price</td><td>@item.IsAlcohol</td></tr>
+    }
+</table>
