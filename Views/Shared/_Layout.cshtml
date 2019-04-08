@@ -1,0 +1,50 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header>
+        <ul class="menu-main">
+            <li><a href="../Home/Index">Главная</a></li>
+            <li><a href="../DishMenu/ShowDishes">Блюда</a></li>
+            <li><a href="../DrinkMenu/ShowDrinks">Напитки</a></li>
+            <li><a href="">Бронь</a></li>
+            <li><a href="">Контакты</a></li>
+            @if (User.Identity.IsAuthenticated)
+            {
+
+            <a href="#" class='btn open-modal' data-modal="#modal1">@User.Identity.Name</a>
+
+                <div class='modal' id='modal1'>
+                    <div class='content'>
+                        <h1 class='title'>@User.Identity.Name</h1>
+                        <form method="post" asp-controller="Account" asp-action="LogOff">
+                            <input type="submit" value="Выход" />
+                        </form>
+                        <a  class='btn close-modal' data-modal="#modal1" href="#"></a>
+                    </div>
+                </div>
+
+
+                <script src="~/js/site.js"></script>
+
+
+
+            }
+            else
+            {
+                <li><a asp-controller="Account" asp-action="Login">Вход</a></li>
+            }
+        </ul>
+    </header>  
+
+    @RenderBody()
+
+</body>
+</html>

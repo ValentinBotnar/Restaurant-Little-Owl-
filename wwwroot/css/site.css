@@ -1,0 +1,248 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+
+/*Меню сайта*/
+body {
+    background-color: dimgrey;
+}
+
+
+.menu-main {
+    list-style: none;
+    margin: 40px 0 5px;
+    padding: 25px 0 5px;
+    text-align: center;
+    background: white;
+}
+
+    .menu-main li {
+        display: inline-block;
+    }
+
+    .menu-main li:after {
+        content: "|";
+        color: #606060;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .menu-main li:last-child:after {
+        content: none;
+    }
+
+    .menu-main a {
+        text-decoration: none;
+       /* font-family: 'Ubuntu Condensed', sans-serif;*/
+        letter-spacing: 2px;
+        position: relative;
+        padding-bottom: 20px;
+        margin: 0 34px 0 30px;
+        font-size: 17px;
+        text-transform: uppercase;
+        display: inline-block;
+        transition: color .2s;
+    }
+
+    .menu-main a, .menu-main a:visited {
+        color: #9d999d;
+    }
+
+    .menu-main a.current, .menu-main a:hover {
+        color: #feb386;
+    }
+
+    .menu-main a:before,
+    .menu-main a:after {
+        content: "";
+        position: absolute;
+        height: 4px;
+        top: auto;
+        right: 50%;
+        bottom: -5px;
+        left: 50%;
+        background: #feb386;
+        transition: .8s;
+    }
+
+    .menu-main a:hover:before, .menu-main .current:before {
+        left: 0;
+    }
+
+    .menu-main a:hover:after, .menu-main .current:after {
+        right: 0;
+    }
+
+@media (max-width: 550px) {
+    .menu-main {
+        padding-top: 0;
+    }
+
+    .menu-main li {
+        display: block;
+    }
+
+    .menu-main li:after {
+        content: none;
+    }
+
+    .menu-main a {
+        padding: 25px 0 20px;
+        margin: 0 30px;
+    }
+}
+
+
+/*Основной контент*/
+.MainContent {
+    width: 60%;
+    margin: auto;
+    padding: 30px 0 0 0 ;
+}
+
+.product-wrapper {
+    display: block;
+    width: 100%;
+    float: left;
+    transition: width .2s;
+}
+
+@media only screen and (min-width: 450px) {
+    .product-wrapper {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .product-wrapper {
+        width: 33.333%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .product-wrapper {
+        width: 25%;
+    }
+}
+
+.product {
+    display: block;
+    border: 1px solid #FF7F50;
+    border-radius: 3px;
+    position: relative;
+    background: #fff;
+    margin: 0 20px 20px 0;
+    text-decoration: none;
+    color: #474747;
+    z-index: 0;
+    height: 300px;
+    height: 0;
+    padding-bottom: 130%;
+}
+
+.products {
+    list-style: none;
+    margin: 0 -20px 0 0;
+    padding: 0;
+}
+
+.product-photo {
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+
+.product-photo img {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    transition: transform .4s ease-out;
+}
+
+.product:hover .product-photo img {
+    transform: scale(1.05);
+}
+
+.product p {
+    text-align:center;
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4em;
+    height: 5.6em;
+    overflow: hidden;
+}
+
+
+
+
+
+/*Окно*/
+
+.btn {
+    padding: 0px 50px;
+    display: inline-block;
+    background: white;
+    color: white;
+    text-decoration: none;
+    transition: 0.35s ease-in-out;
+    font-weight: 700;
+}
+
+.overlay {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.35s ease-in-out;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+    .overlay.open {
+        opacity: 1;
+        pointer-events: inherit;
+    }
+
+    .overlay .modal {
+        background: white;
+        text-align: center;
+        padding: 40px 80px;
+        box-shadow: 0px 1px 10px rgba(255, 255, 255, 0.35);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.35s ease-in-out;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .overlay .modal.open {
+        opacity: 1;
+        pointer-events: inherit;
+    }
+
+    .overlay .modal.open .content {
+        transform: translate(0, 0px);
+        opacity: 1;
+    }
+
+    .overlay .modal .content {
+        transform: translate(0, -10px);
+        opacity: 0;
+        transition: 0.35s ease-in-out;
+    }
+
+    .overlay .modal .title {
+        margin-top: 0;
+    }

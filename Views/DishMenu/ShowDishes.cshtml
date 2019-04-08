@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Restaurant.Models.Dish>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="MainContent">
+    <ul class="products clearfix">
+        @foreach (var item in Model)
+        {
+            <li class="product-wrapper">
+                <a href="" class="product">
+                    <div class="product-photo">
+
+                        <img src="~/@item.Picture" alt="">
+                        <p>
+                            @item.Name<br />
+                            @item.Price руб.
+
+                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Id">Buy Now</a>
+
+                        </p>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Restaurant.Models.Cart.Item>
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h2>Your Cart</h2>
+
+<div class="MainContent">
+    <ul class="products clearfix">
+        @foreach (var item in Model)
+        {
+            <li class="product-wrapper">
+                <a href="" class="product">
+                    <div class="product-photo">
+
+                        <img src="~/@item.dish.Picture" alt="">
+                        <p>
+                            @item.dish.Name<br />
+                            @item.dish.Price руб.
+
+                        </p>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
